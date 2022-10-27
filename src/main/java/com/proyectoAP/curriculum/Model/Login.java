@@ -17,19 +17,18 @@ public class Login {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @Column(name="usuario")
-    private String usuario;
+    @Column(name="username")
+    private String username;
     @Column(name="password")
     private String password;
 
     public Login() {
     }
 
-    public Login(Long id, String usuario, String password) {
+    public Login(Long id, String username, String password) {
         this.id = id;
-        this.usuario = usuario;
+        this.username = username;
         this.password = password;
     }
-    
-    
+
 }

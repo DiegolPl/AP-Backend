@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ILoginRepository extends JpaRepository<Login, Long>{
-    
 }

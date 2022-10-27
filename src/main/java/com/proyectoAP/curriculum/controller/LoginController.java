@@ -2,13 +2,12 @@
 package com.proyectoAP.curriculum.controller;
 
 import com.proyectoAP.curriculum.Model.Login;
-import com.proyectoAP.curriculum.service.LoginService;
+import com.proyectoAP.curriculum.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,17 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     
     @Autowired
-    private LoginService loginServ;
+    private ILoginService loginServ;
     
     @PostMapping("/verificar")
-    public String estaRegistrado(@RequestParam("usuario") String user,@RequestParam("password") String password){
+    public boolean estaRegistrado(@RequestBody Login usuario){
         Login datosBD = loginServ.getLogin(Long.parseLong("1"));
         
-        if (datosBD.getUsuario().equals(user) && datosBD.getPassword().equals(password)){
-            return "Esto es un token ya que el usuario esta registrado";
-        }else{
-            return "El usuario no se encuentra registrado.";
-        }
+        return datosBD.getUsername().equals(usuario.getUsername()) && datosBD.getPassword().equals(usuario.getPassword());
     }
     
     @PostMapping("/crear")
