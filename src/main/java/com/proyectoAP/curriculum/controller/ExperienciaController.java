@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-//Lo siguiente lo debo poner para evitar error de CORS (angular)
 @CrossOrigin(origins={"https://apfrontdiego.web.app/"})
 @RequestMapping("/experiencias")
 public class ExperienciaController {
